@@ -229,7 +229,26 @@ h1 {
     border-radius: 100%;
     margin-bottom:1px;
 }
+.notfound{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.notfound-404 h1{
+    
+    font-size: 700%;
+    
+}
 
+.notfound.active{
+    display: flex;
+}
 @media screen and (max-width:459px) {
     .parameter-container{
         flex-direction: column; 

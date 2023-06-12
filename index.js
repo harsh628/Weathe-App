@@ -6,7 +6,7 @@ const grantAccessContainer = document.querySelector(".grant-location-container")
 const searchForm = document.querySelector("[data-searchForm]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
-
+const errorpage=document.querySelector("[errorpage1]");
 //initially vairables need????
 
 let oldTab = userTab;
@@ -30,6 +30,7 @@ function switchTab(newTab) {
             //main pehle search wale tab pr tha, ab your weather tab visible karna h 
             searchForm.classList.remove("active");
             userInfoContainer.classList.remove("active");
+            errorpage.classList.remove("active");
             //ab main your weather tab me aagya hu, toh weather bhi display karna poadega, so let's check local storage first
             //for coordinates, if we haved saved them there.
             getfromSessionStorage();
@@ -158,9 +159,22 @@ async function fetchSearchWeatherInfo(city) {
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
           );
         const data = await response.json();
-        loadingScreen.classList.remove("active");
+        const err=data.cod;
+        if(err==404)
+        {
+         loadingScreen.classList.remove("active");
+         errorpage.classList.add("active");
+
+        }else
+        {
+         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
+        errorpage.classList.remove("active");
+
+       
         renderWeatherInfo(data);
+        }
+        
     }
     catch(err) {
         //hW
