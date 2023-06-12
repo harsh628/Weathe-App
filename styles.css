@@ -229,3 +229,14 @@ h1 {
     border-radius: 100%;
     margin-bottom:1px;
 }
+
+@media screen and (max-width:459px) {
+    .parameter-container{
+        flex-direction: column; 
+    }
+
+    .parameter{
+
+        width:50%;
+    }
+}
